@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+  <title>main rb</title>
+</head>
+<body>
+  <h5>main rb page</h5>
+  <a href="/data">go to data</a>
+  <section id="fetch-dat">
+    <h6>fetch request</h6>
+    <form>
+     <input id="dat" type="text" name="data" value="" placeholder="data">
+     <input id="btn-fetch" type="button" name="" value="fetch">
+    </form>
+    <br>
+    <h5>fetch output</h5>
+    <div id="f-out"></div>
+  <br>
+
+  </section>
+
+<style media="screen">
+  body{
+    background: silver;
+  }
+</style>
+<script>
+//fetch form
+//var url_get="http://127.0.0.1:5000/getrq"
+var url_rb="http://127.0.0.1:4567/api"
+var url_lh="http://localhost:4567/api"
+var url_hrk="https://rb-proj.herokuapp.com/api"
+
+async function fetch_dat(){
+  var fetch_data=await fetch(url_hrk)
+  var data = await fetch_data.json()
+  console.log("result of fetch ", data);
+  $('#f-out').text(data);
+}
+
+$('#btn-fetch').on('click', fetch_dat)
+</script>
+</body>
+</html>
